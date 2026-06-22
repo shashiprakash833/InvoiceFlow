@@ -11,7 +11,7 @@ def send_email(receiver_email, pdf_path):
 
     encoded_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
 
-    resend.Emails.send({
+    response = resend.Emails.send({
         "from": "onboarding@resend.dev",
         "to": [receiver_email],
         "subject": "Your Invoice",
@@ -23,5 +23,7 @@ def send_email(receiver_email, pdf_path):
             }
         ]
     })
+
+    print("RESEND RESPONSE:", response)
 
     return True
