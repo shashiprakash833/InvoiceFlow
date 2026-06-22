@@ -35,8 +35,10 @@ def new_order(order: Order):
         order.price,
         bill
     )
-
-    print("EMAIL DISABLED FOR TESTING")
+    try:
+    send_email(order.email, pdf)
+except Exception as e:
+    print("Email Error:", e)
 
     return {
         "status": "success",
